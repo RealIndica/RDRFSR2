@@ -1,11 +1,25 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
 #include "pch.h"
 #include <Windows.h>
+#include <iostream>
 
-void Patch() {
-    DWORD jzAddress = 0x26C4CCD;
+uintptr_t base;
+
+DWORD _GPU_CHK = 0x26C4CCC;
+DWORD _SIG_VER = 0x5AE42EC;
+
+void Start() {
     uintptr_t base = (uintptr_t)GetModuleHandle(NULL);
-    *(BYTE*)(base + jzAddress) = 0x85; //JZ > JNZ
+	
+	//Patch GPU_CHK
+    PVOID t = (PVOID)(base + _GPU_CHK);
+    DWORD d, ds;
+    VirtualProtect(t, 6, PAGE_EXECUTE_READWRITE, &d);
+    memset(t, 0x90, 6);
+    VirtualProtect(t, 6, d, &ds);
+	
+	//Patch _SIG_VER
+    *(BYTE*)(base + _SIG_VER) = 0x01;
 }
 
 BOOL APIENTRY DllMain( HMODULE hModule,
@@ -16,7 +30,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        Patch();
+        Start();
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     case DLL_PROCESS_DETACH:
