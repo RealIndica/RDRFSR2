@@ -4,6 +4,7 @@
  
 ## Installation
 
+* Ensure you are using DX12 for RDR2 and not Vulkan!
 * Download the latest release 
 * Unzip the contents to your RDR2 executable directory
 * Open the "EnableSignatureOverride.reg" and apply the changes to your registry
