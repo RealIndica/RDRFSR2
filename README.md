@@ -1,6 +1,12 @@
 # FidelityFx Super Resolution 2.0 for Red Dead Redemption 2
 
  This mod is a library for RDR2 which replaces Nvidia DLSS with AMD FidelityFX Super Resolution 2.0
+ 
+## Installation
+
+* Download the latest release 
+* Unzip the contents to your RDR2 executable directory
+* Run RDR2
 
 ## Compilation
 
