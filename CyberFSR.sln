@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CyberFSR", "CyberFSR\CyberFSR.vcxproj", "{8D2B73FB-EECD-45CE-B8E5-335610462F58}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nvngxLoader", "nvngxLoader\nvngxLoader.vcxproj", "{9033F8A6-879A-4FF1-A374-3F089856B05C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{8D2B73FB-EECD-45CE-B8E5-335610462F58}.Release|x64.Build.0 = Release|x64
 		{8D2B73FB-EECD-45CE-B8E5-335610462F58}.Release|x86.ActiveCfg = Release|Win32
 		{8D2B73FB-EECD-45CE-B8E5-335610462F58}.Release|x86.Build.0 = Release|Win32
+		{9033F8A6-879A-4FF1-A374-3F089856B05C}.Debug|x64.ActiveCfg = Debug|x64
+		{9033F8A6-879A-4FF1-A374-3F089856B05C}.Debug|x64.Build.0 = Debug|x64
+		{9033F8A6-879A-4FF1-A374-3F089856B05C}.Debug|x86.ActiveCfg = Debug|Win32
+		{9033F8A6-879A-4FF1-A374-3F089856B05C}.Debug|x86.Build.0 = Debug|Win32
+		{9033F8A6-879A-4FF1-A374-3F089856B05C}.Release|x64.ActiveCfg = Release|x64
+		{9033F8A6-879A-4FF1-A374-3F089856B05C}.Release|x64.Build.0 = Release|x64
+		{9033F8A6-879A-4FF1-A374-3F089856B05C}.Release|x86.ActiveCfg = Release|Win32
+		{9033F8A6-879A-4FF1-A374-3F089856B05C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
