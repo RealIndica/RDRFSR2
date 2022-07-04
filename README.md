@@ -3,6 +3,8 @@
  This mod is a library for RDR2 which replaces Nvidia DLSS with AMD FidelityFX Super Resolution 2.0.
  This will not work with cracked versions of RDR2.
  
+ An extended guide to help with any issues can be found on the Nexus mod description [here](https://www.nexusmods.com/reddeadredemption2/mods/1550)
+ 
 ## Installation
 
 * Ensure you are using DX12 for RDR2 and not Vulkan!
