@@ -6,6 +6,7 @@
 ## Installation
 
 * Ensure you are using DX12 for RDR2 and not Vulkan!
+* Ensure asyncComputeEnabled is set to false in your system.xml file found in Documents\Rockstar Games\Red Dead Redemption 2\Settings\system.xml
 * Download the latest release 
 * Unzip the contents to your RDR2 executable directory
 * Run RDR2
