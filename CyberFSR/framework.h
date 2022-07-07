@@ -12,8 +12,11 @@
 
 #include <ffx-fsr2-api/ffx_fsr2.h>
 #include <ffx-fsr2-api/dx12/ffx_fsr2_dx12.h>
+#include <ffx-fsr2-api/vk/ffx_fsr2_vk.h>
 
 #define NV_WINDOWS
 #define NVSDK_NGX
 #define NGX_ENABLE_DEPRECATED_GET_PARAMETERS
+
 #include <nvsdk_ngx.h>
+#include <nvsdk_ngx_vk.h>

@@ -2,6 +2,12 @@
 #include "pch.h"
 #include "ViewMatrixHook.h"
 #include "Dx12ParameterImpl.h"
+#include "VkParameterImpl.h"
+
+BOOL IsVK = false;
+VkInstance VK_Instance;
+VkPhysicalDevice VK_PhysicalDevice;
+VkDevice VK_Device;
 
 class FeatureContext;
 
@@ -33,6 +39,7 @@ public:
 	std::unique_ptr<ViewMatrixHook> ViewMatrix;
 	NVSDK_NGX_Handle Handle;
 	ID3D12Device* DxDevice;
+	VkDevice* VkDevice;
 	std::unique_ptr<FfxFsr2Context> FsrContext;
 
 	unsigned int Width{}, Height{}, RenderWidth{}, RenderHeight{};

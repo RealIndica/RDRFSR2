@@ -81,8 +81,8 @@
     <LibraryPath>$(SolutionDir)external\FidelityFX-FSR2\bin\ffx_fsr2_api;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)external\nvngx_dlss_sdk\include;$(SolutionDir)external\FidelityFX-FSR2\src;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)external\FidelityFX-FSR2\bin\ffx_fsr2_api;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)external\nvngx_dlss_sdk\include;$(SolutionDir)external\FidelityFX-FSR2\src;$(VULKAN_SDK)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VULKAN_SDK)\Lib;$(SolutionDir)external\FidelityFX-FSR2\bin\ffx_fsr2_api;$(LibraryPath)</LibraryPath>
     <TargetName>nvngx</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -161,21 +161,20 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>ffx_fsr2_api_dx12_x64.lib;ffx_fsr2_api_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ffx_fsr2_api_dx12_x64.lib;ffx_fsr2_api_vk_x64.lib;ffx_fsr2_api_x64.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CyberFsr.h" />
-    <ClInclude Include="DirectXHooks.h" />
     <ClInclude Include="Dx12ParameterImpl.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="ViewMatrixHook.h" />
+    <ClInclude Include="VkParameterImpl.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CyberFsr.cpp" />
-    <ClCompile Include="DirectXHooks.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Dx12ParameterImpl.cpp" />
     <ClCompile Include="pch.cpp">
@@ -186,6 +185,7 @@
     </ClCompile>
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="ViewMatrixHook.cpp" />
+    <ClCompile Include="VkParameterImpl.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

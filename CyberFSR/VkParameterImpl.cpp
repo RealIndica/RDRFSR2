@@ -1,13 +1,13 @@
 #include "pch.h"
 #include "Util.h"
-#include "Dx12ParameterImpl.h"
+#include "VkParameterImpl.h"
 
-void Dx12ParameterImpl::Set(const char* InName, unsigned long long InValue)
+void VkParameterImpl::Set(const char* InName, unsigned long long InValue)
 {
 	//TODO
 }
 
-void Dx12ParameterImpl::Set(const char* InName, float InValue)
+void VkParameterImpl::Set(const char* InName, float InValue)
 {
 	switch (Util::NvParameterToEnum(InName))
 	{
@@ -25,21 +25,20 @@ void Dx12ParameterImpl::Set(const char* InName, float InValue)
 		break;
 	case Util::NvParameter::Sharpness:
 		Sharpness = InValue;
-		break;
 	}
 }
 
-void Dx12ParameterImpl::Set(const char* InName, double InValue)
+void VkParameterImpl::Set(const char* InName, double InValue)
 {
 	//TODO
 }
 
-void Dx12ParameterImpl::Set(const char* InName, unsigned int InValue)
+void VkParameterImpl::Set(const char* InName, unsigned int InValue)
 {
 	Set(InName, static_cast<int>(InValue));
 }
 
-void Dx12ParameterImpl::Set(const char* InName, int InValue)
+void VkParameterImpl::Set(const char* InName, int InValue)
 {
 	switch (Util::NvParameterToEnum(InName))
 	{
@@ -81,64 +80,50 @@ void Dx12ParameterImpl::Set(const char* InName, int InValue)
 	}
 }
 
-void Dx12ParameterImpl::Set(const char* InName, ID3D11Resource* InValue)
+void VkParameterImpl::Set(const char* InName, ID3D11Resource* InValue)
 {
 	//TODO
 }
 
-void Dx12ParameterImpl::Set(const char* InName, ID3D12Resource* InValue)
+void VkParameterImpl::Set(const char* InName, ID3D12Resource* InValue)
+{
+	//Not needed here
+}
+
+void VkParameterImpl::Set(const char* InName, void* InValue)
 {
 	switch (Util::NvParameterToEnum(InName))
 	{
 	case Util::NvParameter::DLSS_Input_Bias_Current_Color_Mask:
-		InputBiasCurrentColorMask = InValue;
-		if (InValue)
-			InputBiasCurrentColorMask->SetName(L"InputBiasColorMask");
+		InputBiasCurrentColorMask = static_cast<NVSDK_NGX_Resource_VK*>(InValue);
 		break;
 	case Util::NvParameter::Color:
-		Color = InValue;
-		if (InValue)
-			Color->SetName(L"Color");
+		Color = static_cast<NVSDK_NGX_Resource_VK*>(InValue);
 		break;
 	case Util::NvParameter::Depth:
-		Depth = InValue;
-		if (InValue)
-			Depth->SetName(L"Depth");
+		Depth = static_cast<NVSDK_NGX_Resource_VK*>(InValue);
 		break;
 	case Util::NvParameter::MotionVectors:
-		MotionVectors = InValue;
-		if (InValue)
-			MotionVectors->SetName(L"MotionVectors");
+		MotionVectors = static_cast<NVSDK_NGX_Resource_VK*>(InValue);
 		break;
 	case Util::NvParameter::Output:
-		Output = InValue;
-		if (InValue)
-			Output->SetName(L"Output");
+		Output = static_cast<NVSDK_NGX_Resource_VK*>(InValue);
 		break;
 	case Util::NvParameter::TransparencyMask:
-		TransparencyMask = InValue;
-		if (InValue)
-			TransparencyMask->SetName(L"TransparencyMask");
+		TransparencyMask = static_cast<NVSDK_NGX_Resource_VK*>(InValue);
 		break;
 	case Util::NvParameter::ExposureTexture:
-		ExposureTexture = InValue;
-		if (InValue)
-			ExposureTexture->SetName(L"ExposureTexture");
+		ExposureTexture = static_cast<NVSDK_NGX_Resource_VK*>(InValue);
 		break;
 	}
 }
 
-void Dx12ParameterImpl::Set(const char* InName, void* InValue)
-{
-	//TODO
-}
-
-NVSDK_NGX_Result Dx12ParameterImpl::Get(const char* InName, unsigned long long* OutValue) const
+NVSDK_NGX_Result VkParameterImpl::Get(const char* InName, unsigned long long* OutValue) const
 {
 	return NVSDK_NGX_Result_Fail;
 }
 
-NVSDK_NGX_Result Dx12ParameterImpl::Get(const char* InName, float* OutValue) const
+NVSDK_NGX_Result VkParameterImpl::Get(const char* InName, float* OutValue) const
 {
 	switch (Util::NvParameterToEnum(InName))
 	{
@@ -153,17 +138,17 @@ NVSDK_NGX_Result Dx12ParameterImpl::Get(const char* InName, float* OutValue) con
 	return NVSDK_NGX_Result_Success;
 }
 
-NVSDK_NGX_Result Dx12ParameterImpl::Get(const char* InName, double* OutValue) const
+NVSDK_NGX_Result VkParameterImpl::Get(const char* InName, double* OutValue) const
 {
 	return NVSDK_NGX_Result_Fail;
 }
 
-NVSDK_NGX_Result Dx12ParameterImpl::Get(const char* InName, unsigned int* OutValue) const
+NVSDK_NGX_Result VkParameterImpl::Get(const char* InName, unsigned int* OutValue) const
 {
 	return Get(InName, reinterpret_cast<int*>(OutValue));
 }
 
-NVSDK_NGX_Result Dx12ParameterImpl::Get(const char* InName, int* OutValue) const
+NVSDK_NGX_Result VkParameterImpl::Get(const char* InName, int* OutValue) const
 {
 	switch (Util::NvParameterToEnum(InName))
 	{
@@ -212,19 +197,19 @@ NVSDK_NGX_Result Dx12ParameterImpl::Get(const char* InName, int* OutValue) const
 	return NVSDK_NGX_Result_Success;
 }
 
-NVSDK_NGX_Result Dx12ParameterImpl::Get(const char* InName, ID3D11Resource** OutValue) const
+NVSDK_NGX_Result VkParameterImpl::Get(const char* InName, ID3D11Resource** OutValue) const
 {
 	return NVSDK_NGX_Result_Fail;
 }
 
-NVSDK_NGX_Result Dx12ParameterImpl::Get(const char* InName, ID3D12Resource** OutValue) const
+NVSDK_NGX_Result VkParameterImpl::Get(const char* InName, ID3D12Resource** OutValue) const
 {
 	return NVSDK_NGX_Result_Fail;
 }
 
 NVSDK_NGX_Result NVSDK_CONV NVSDK_NGX_DLSS_GetOptimalSettingsCallback(NVSDK_NGX_Parameter* InParams);
 
-NVSDK_NGX_Result Dx12ParameterImpl::Get(const char* InName, void** OutValue) const
+NVSDK_NGX_Result VkParameterImpl::Get(const char* InName, void** OutValue) const
 {
 	switch (Util::NvParameterToEnum(InName))
 	{
@@ -239,12 +224,12 @@ NVSDK_NGX_Result Dx12ParameterImpl::Get(const char* InName, void** OutValue) con
 	return NVSDK_NGX_Result_Success;
 }
 
-void Dx12ParameterImpl::Reset()
+void VkParameterImpl::Reset()
 {
 	//TODO
 }
 
-void Dx12ParameterImpl::EvaluateRenderScale()
+void VkParameterImpl::EvaluateRenderScale()
 {
 	FfxFsr2QualityMode fsrQualityMode;
 

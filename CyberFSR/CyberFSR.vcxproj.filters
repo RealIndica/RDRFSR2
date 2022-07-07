@@ -30,10 +30,10 @@
     <ClInclude Include="Util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DirectXHooks.h">
+    <ClInclude Include="ViewMatrixHook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ViewMatrixHook.h">
+    <ClInclude Include="VkParameterImpl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,10 +53,10 @@
     <ClCompile Include="Util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DirectXHooks.cpp">
+    <ClCompile Include="ViewMatrixHook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ViewMatrixHook.cpp">
+    <ClCompile Include="VkParameterImpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
