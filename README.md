@@ -7,8 +7,6 @@
  
 ## Installation
 
-* Ensure you are using DX12 for RDR2 and not Vulkan!
-* Ensure asyncComputeEnabled is set to false in your system.xml file found in Documents\Rockstar Games\Red Dead Redemption 2\Settings\system.xml
 * Download the latest release 
 * Unzip the contents to your RDR2 executable directory
 * Run RDR2
@@ -16,10 +14,11 @@
 ## Compilation
 
 * Clone this repo including all submodules
-* Compile the FSR 2.0 submodule in external/FidelityFX-FSR2 like it is described in their Readme https://github.com/GPUOpen-Effects/FidelityFX-FSR2#quick-start-checklist. Note: I used the GenerateSolutionsDLL.bat but I am sure static libraries will work fine too
+* Download and install the Vulkan SDK [here](https://vulkan.lunarg.com/sdk/home) and ensure VULKAN_SDK environment variable is set
+* Compile the FSR 2.0 submodule in external/FidelityFX-FSR2 like it is described in their Readme https://github.com/GPUOpen-Effects/FidelityFX-FSR2#quick-start-checklist. (be sure to build DX and VK!) Note: I used the GenerateSolutionsDLL.bat but I am sure static libraries will work fine too
 * Open the CyberFSR.sln with Visual Studio 2022
 * Compile the entire solution
-* Copy the compiled DLLs (nvngx.dll & d3d11.dll), ffx_fsr2_api_dx12_x64.dll and ffx_fsr2_api_x64.dll from the FidelityFX Directory to your RDR2 executable directory
+* Copy the compiled DLLs (nvngx.dll & d3d11.dll), ffx_fsr2_api_dx12_x64.dll, ffx_fsr2_api_vk_x64.dll and ffx_fsr2_api_x64.dll from the FidelityFX Directory to your RDR2 executable directory
 * Run the game and set the quality in the DLSS settings
 * Play the game with FSR 2.0
 
