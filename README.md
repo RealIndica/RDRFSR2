@@ -5,6 +5,8 @@
  
  An extended guide to help with any issues can be found on the Nexus mod description [here](https://www.nexusmods.com/reddeadredemption2/mods/1550)
  
+ NOTE : Ultra-Quality option in-game DLSS setting is basically the AMD-equivilent of DLAA and provide better-than-native image quality at the cost of performance
+ 
 ## Installation
 
 * Download the latest release 
