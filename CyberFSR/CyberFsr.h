@@ -1,20 +1,21 @@
 #pragma once
 #include "pch.h"
 #include "ViewMatrixHook.h"
-#include "Dx12ParameterImpl.h"
-#include "VkParameterImpl.h"
-
-BOOL IsVK = false;
-VkInstance VK_Instance;
-VkPhysicalDevice VK_PhysicalDevice;
-VkDevice VK_Device;
+#include "NvParameter.h"
 
 class FeatureContext;
 
 //Global Context
 class CyberFsrContext
 {
+	CyberFsrContext();
 public:
+	std::shared_ptr<Config> MyConfig;
+
+	VkDevice VulkanDevice;
+	VkInstance VulkanInstance;
+	VkPhysicalDevice VulkanPhysicalDevice;
+
 	std::vector<NVSDK_NGX_Parameter*> Parameters;
 	template<class T> NVSDK_NGX_Parameter* AllocateParameter();
 	void DeleteParameter(NVSDK_NGX_Parameter* parameter);
@@ -23,14 +24,11 @@ public:
 	FeatureContext* CreateContext();
 	void DeleteContext(NVSDK_NGX_Handle* handle);
 
-	static CyberFsrContext& instance()
+	static std::shared_ptr<CyberFsrContext> instance()
 	{
-		static CyberFsrContext INSTANCE;
+		static std::shared_ptr<CyberFsrContext> INSTANCE{new CyberFsrContext()};
 		return INSTANCE;
 	}
-
-private:
-	CyberFsrContext() {}
 };
 
 class FeatureContext
@@ -39,7 +37,6 @@ public:
 	std::unique_ptr<ViewMatrixHook> ViewMatrix;
 	NVSDK_NGX_Handle Handle;
 	ID3D12Device* DxDevice;
-	VkDevice* VkDevice;
 	std::unique_ptr<FfxFsr2Context> FsrContext;
 
 	unsigned int Width{}, Height{}, RenderWidth{}, RenderHeight{};
